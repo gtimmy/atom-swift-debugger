@@ -49,7 +49,7 @@ class SwiftDebuggerView extends View
       @askForPaths()
       return
 
-    @swiftBuild = spawn @swiftPath+'/swift', ['build', '--chdir', @workspacePath()]
+    @swiftBuild = spawn @swiftPath+'/swift', ['build', '--package-path', @workspacePath()]
     @swiftBuild.stdout.on 'data',(data) =>
       @addOutput(data.toString().trim())
     @swiftBuild.stderr.on 'data',(data) =>
